@@ -81,6 +81,18 @@ function view_myPEZ_create($_post, $_user, $_conf)
     );
     jrCore_form_field_create($_tmp);
 
+    // PEZ description
+    $_tmp = array(
+        'name'       => 'pez_description',
+        'label'      => 'description',
+        'help'       => 'Enter a description for this database.',
+        'type'       => 'textarea',
+        'validate'   => 'printable',
+        'required'   => true,
+        'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+    jrCore_form_field_create($_tmp);
+
     // Display page with form in it
     jrCore_page_display();
 }
@@ -176,6 +188,17 @@ function view_myPEZ_update($_post, $_user, $_conf)
         'type'      => 'text',
         'validate'  => 'printable',
         'required'  => true
+    );
+    jrCore_form_field_create($_tmp);
+
+    // PEZ description
+    $_tmp = array(
+        'name'       => 'pez_description',
+        'label'      => 'description',
+        'help'       => 'Enter a description for this database.',
+        'type'       => 'textarea',
+        'validate'   => 'printable',
+        'required'   => true
     );
     jrCore_form_field_create($_tmp);
 

@@ -1,6 +1,15 @@
 .pezdatabase_steminfo_element_left{
-    color: rgba(255, 3, 3, 1);
+    background-color: #FFFFFF;
+    color: red;
+    font-family: impact;
+    font-style: normal;
+    font-weight: bolder;
     font-size: 30px;
+    border-radius: 6px;
+    box-shadow: 5px 5px 6px #224466;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 5px 5px 6px #224466;
 
 
 }
@@ -10,8 +19,17 @@
 }
 
 .pezdatabase_packaging_element_left {
-    color: rgba(255, 3, 3, 1);
+    background-color: #FFFFFF;
+    color: red;
+    font-family: impact;
+    font-style: normal;
+    font-weight: bolder;
     font-size: 30px;
+    border-radius: 6px;
+    box-shadow: 5px 5px 6px #224466;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 5px 5px 6px #224466;
 }
 
 .pezdatabase_packaging_element_right {
@@ -19,8 +37,17 @@
 }
 
 .pezdatabase_purchaseinfo_element_left {
-    color: rgba(255, 3, 3, 1);
+    background-color: #FFFFFF;
+    color: red;
+    font-family: impact;
+    font-style: normal;
+    font-weight: bolder;
     font-size: 30px;
+    border-radius: 6px;
+    box-shadow: 5px 5px 6px #224466;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 5px 5px 6px #224466;
 
 }
 
