@@ -1,0 +1,30 @@
+.pezdatabase_steminfo_element_left{
+    color: rgba(255, 3, 3, 1);
+    font-size: 30px;
+
+
+}
+
+.pezdatabase_steminfo_element_right {
+    display: none;
+}
+
+.pezdatabase_packaging_element_left {
+    color: rgba(255, 3, 3, 1);
+    font-size: 30px;
+}
+
+.pezdatabase_packaging_element_right {
+    display: none;
+}
+
+.pezdatabase_purchaseinfo_element_left {
+    color: rgba(255, 3, 3, 1);
+    font-size: 30px;
+
+}
+
+.pezdatabase_purchaseinfo_element_right {
+    display: none;
+}
+ 
