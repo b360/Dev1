@@ -105,7 +105,7 @@ function myPEZDatabase_init()
     // Allow admin to customize our forms
     jrCore_register_module_feature('jrCore', 'designer_form', 'myPEZDatabase', 'create');
     jrCore_register_module_feature('jrCore', 'designer_form', 'myPEZDatabase', 'update');
-    jrCore_register_module_feature('jrCore', 'designer_form', 'myPEZDatabase', 'uploadCSV');
+//    jrCore_register_module_feature('jrCore', 'designer_form', 'myPEZDatabase', 'uploadODS');
 
     // Core support
     jrCore_register_module_feature('jrCore', 'quota_support', 'myPEZDatabase', 'on');
@@ -126,10 +126,10 @@ function myPEZDatabase_init()
     jrCore_register_module_feature('jrProfile', 'profile_stats', 'myPEZDatabase', 'profile_myPEZDatabase_item_count', 1);
 
     // Tools
-    jrCore_register_module_feature('jrCore', 'tool_view', 'myPEZDatabase', 'uploadCSV', array('Upload CSV file', 'Uploads a new CSV file'));
+    jrCore_register_module_feature('jrCore', 'tool_view', 'myPEZDatabase', 'uploadODS', array('Upload ODS file', 'Uploads a new ODS file'));
 
     // view controller
-    // jrCore_register_event_listener('jrCore', 'uploadCSV', 'myPEZDatabase_uploadCSV_view_listener');
+    // jrCore_register_event_listener('jrCore', 'uploadODS', 'myPEZDatabase_uploadODS_view_listener');
     return true;
 }
 
