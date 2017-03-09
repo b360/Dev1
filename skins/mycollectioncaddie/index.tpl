@@ -1,4 +1,4 @@
-{* /////////// DO NOT REMOVE //////////  *}
+{* /////////// DO NOT REMOVE added a comment by michael //////////  *}
 {assign var="page_template" value="index"}
 {* /////////// DO NOT REMOVE //////////  *}
 
