@@ -113,8 +113,6 @@ function view_myPEZDatabase_create($_post, $_user, $_conf)
     );
     jrCore_form_field_create($_tmp);
 
-
-
     // This is where you would hook in to the form with php
 
     // Display page with form in it
@@ -299,11 +297,11 @@ function view_myPEZDatabase_delete($_post, $_user, $_conf)
 }
 
 //------------------------------
-// uploadCSV
+// uploadODS
 //------------------------------
-function view_myPEZDatabase_uploadCSV($_data, $_user, $_conf, $_args, $event)
+function view_myPEZDatabase_uploadODS($_data, $_user, $_conf, $_args, $event)
 {
-    // Must be logged in to uploadCSV
+    // Must be logged in to uploadODS
     jrUser_session_require_login();
     jrUser_check_quota_access('myPEZDatabase');
     jrProfile_check_disk_usage();
@@ -323,7 +321,7 @@ function view_myPEZDatabase_uploadCSV($_data, $_user, $_conf, $_args, $event)
 
     // PEZDatabase Title
     $_tmp = array(
-        'name'       => "new_CSV",
+        'name'       => "new_ODS",
         'type'       => 'file',
         'label'      => 'ODS File',
         'help'       => 'Upload an ODS file to the database',
@@ -341,9 +339,9 @@ function view_myPEZDatabase_uploadCSV($_data, $_user, $_conf, $_args, $event)
 }
 
 //------------------------------
-// save CSV
+// save ODS
 //------------------------------
-function view_myPEZDatabase_uploadCSV_save($_post, $_user, $_conf)
+function view_myPEZDatabase_uploadODS_save($_post, $_user, $_conf)
 {
 
     // Must be logged in
@@ -357,7 +355,7 @@ function view_myPEZDatabase_uploadCSV_save($_post, $_user, $_conf)
     jrUser_check_quota_access('myPEZDatabase');
 
     // save files here
-    $ods_file = jrCore_get_uploaded_media_files('myPEZDatabase', 'new_CSV');
+    $ods_file = jrCore_get_uploaded_media_files('myPEZDatabase', 'new_ODS');
     if (!is_file($ods_file[0])) {
         // thow an error here, there is no file.
         jrCore_set_form_notice('error', "No file uploaded - please try again ");
@@ -383,22 +381,22 @@ function view_myPEZDatabase_uploadCSV_save($_post, $_user, $_conf)
         $rowData      = $rowDataArray[0]; // this will contain the data of all the cells of the row in array format
         $_sv[]        = array(
             'pezdatabase_title'       => jrCore_db_escape($rowData[3]),
-            'pezdatabase_series_0'       => jrCore_db_escape($rowData[0]),
-            'pezdatabase_series_1' => jrCore_db_escape($rowData[1]),
-            'pezdatabase_series_2'   => jrCore_db_escape($rowData[2]),
-            'pezdatabase_character' => jrCore_db_escape($rowData[3]),
-            'pezdatabase_issue'    => jrCore_db_escape($rowData[4]),
-            'pezdatabase_variation'    => jrCore_db_escape($rowData[5]),
-            'pezdatabase_description'    => jrCore_db_escape($rowData[6]),
-            'pezdatabase_production'    => jrCore_db_escape($rowData[7]),
-            'pezdatabase_country'    => jrCore_db_escape($rowData[8]),
-            'pezdatabase_copyright'    => jrCore_db_escape($rowData[9]),
-            'pezdatabase_stemspecial'    => jrCore_db_escape($rowData[10]),
-            'pezdatabase_stemcolor'    => jrCore_db_escape($rowData[11]),
-            'pezdatabase_patent'    => jrCore_db_escape($rowData[12]),
-            'pezdatabase_feet'    => jrCore_db_escape($rowData[13]),
-            'pezdatabase_madefor'    => jrCore_db_escape($rowData[14]),
-            'pezdatabase_wrapper'    => jrCore_db_escape($rowData[15]),
+            'pezdatabase_series_0'    => jrCore_db_escape($rowData[0]),
+            'pezdatabase_series_1'    => jrCore_db_escape($rowData[1]),
+            'pezdatabase_series_2'    => jrCore_db_escape($rowData[2]),
+            'pezdatabase_character'   => jrCore_db_escape($rowData[3]),
+            'pezdatabase_issue'       => jrCore_db_escape($rowData[4]),
+            'pezdatabase_variation'   => jrCore_db_escape($rowData[5]),
+            'pezdatabase_description' => jrCore_db_escape($rowData[6]),
+            'pezdatabase_production'  => jrCore_db_escape($rowData[7]),
+            'pezdatabase_country'     => jrCore_db_escape($rowData[8]),
+            'pezdatabase_copyright'   => jrCore_db_escape($rowData[9]),
+            'pezdatabase_stemspecial' => jrCore_db_escape($rowData[10]),
+            'pezdatabase_stemcolor'   => jrCore_db_escape($rowData[11]),
+            'pezdatabase_patent'      => jrCore_db_escape($rowData[12]),
+            'pezdatabase_feet'        => jrCore_db_escape($rowData[13]),
+            'pezdatabase_madefor'     => jrCore_db_escape($rowData[14]),
+            'pezdatabase_wrapper'     => jrCore_db_escape($rowData[15]),
 
         );
     }
