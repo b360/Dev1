@@ -65,8 +65,6 @@ function myPEZ_meta()
 function myPEZ_init()
 {
 
-
-
     // Allow admin to customize our forms
     jrCore_register_module_feature('jrCore', 'designer_form', 'myPEZ', 'create');
     jrCore_register_module_feature('jrCore', 'designer_form', 'myPEZ', 'update');
@@ -161,4 +159,37 @@ function myPEZ_adding_item_to_purchase_history_listener($_data, $_user, $_conf, 
         }
     }
     return $_data;
+}
+
+/**
+ * called in a template to display a side style drop down menu which shows the categories, series & sub-series
+ * @param $params
+ * @param $smarty
+ * @return string
+ */
+function smarty_function_myPEZ_drop_down($params, $smarty)
+{
+
+    $out = false;
+    $_sp = array(
+        'search'        => array(
+            "_item_id <  10"
+        ),
+        'skip_triggers' => true,
+        'limit'         => 500
+    );
+    $_sp = jrCore_db_search_items('myPEZDatabase', $_sp);
+    if ($_sp && is_array($_sp['_items'])) {
+//        foreach ($_sp['_items'] as $item) {
+//            $_opt[$item['pezdatabase_series_0']][$item['pezdatabase_series_1']][$item['pezdatabase_series_2']] = $item['_item_id'];
+//        }
+        $out = $_sp['_items'];
+    }
+
+    // Call the appropriate template and return
+    if (isset($params['assign']) && $params['assign'] != '') {
+        $smarty->assign($params['assign'], $out);
+        return '';
+    }
+    return $out;
 }
