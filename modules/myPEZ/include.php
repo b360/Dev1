@@ -172,18 +172,18 @@ function smarty_function_myPEZ_drop_down($params, $smarty)
 
     $out = false;
     $_sp = array(
-        'search'        => array(
-            "_item_id <  10"
-        ),
+//        'search'        => array(
+//            "_item_id <  10"
+//        ),
         'skip_triggers' => true,
-        'limit'         => 500
+        'limit'         => 5000
     );
     $_sp = jrCore_db_search_items('myPEZDatabase', $_sp);
     if ($_sp && is_array($_sp['_items'])) {
-//        foreach ($_sp['_items'] as $item) {
-//            $_opt[$item['pezdatabase_series_0']][$item['pezdatabase_series_1']][$item['pezdatabase_series_2']] = $item['_item_id'];
-//        }
-        $out = $_sp['_items'];
+        foreach ($_sp['_items'] as $item) {
+            $_opt[$item['pezdatabase_series_0']]['children'][$item['pezdatabase_series_1']]['children'][$item['pezdatabase_series_2']] = $item['_item_id'];
+        }
+        $out = $_opt;
     }
 
     // Call the appropriate template and return
