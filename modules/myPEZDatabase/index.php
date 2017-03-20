@@ -101,7 +101,7 @@ function view_myPEZDatabase_create($_post, $_user, $_conf)
     );
     jrCore_form_create($_tmp);
 
-    // PEZDatabase Title
+    // ***  PEZDatabase Title ***
     $_tmp = array(
         'name'       => 'pezdatabase_title',
         'label'      => 3,
@@ -112,6 +112,385 @@ function view_myPEZDatabase_create($_post, $_user, $_conf)
         'onkeypress' => "if (event && event.keyCode == 13) return false;"
     );
     jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Character ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_character',
+        'label'      => 'Character',
+        'help'       => 'What is the name of this PEZ character?',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'required'   => true,
+        'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+    jrCore_form_field_create($_tmp);
+
+// TODO create category, series, sub-series chained select here.
+
+    // *** PEZDatabase Issue ***
+    $_issue_opt = array(
+        0 => 'None',
+        1 => 'A',
+        2 => 'B',
+        3 => 'C',
+        4 => 'D',
+        5 => 'E',
+        6 => 'F',
+        7 => 'G',
+        7 => 'H'
+
+    );
+
+    $_tmp = array(
+        'name'     => 'issue',
+        'type'     => 'select',
+        'options'  => $_issue_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Issue',
+        'help'     => 'Select the issue for this Item.',
+        'order'    => 3
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+// *** PEZDatabase Variation ***
+$_tmp = array(
+    'name'       => 'pezdatabase_variation',
+    'label'      => 'Variation',
+    'help'       => 'What is the Variation of this PEZ? (Red Head, Brown Eyes, Crystal Head...) ',
+    'type'       => 'text',
+    'validate'   => 'printable',
+    'required'   => false,
+    'onkeypress' => "if (event && event.keyCode == 13) return false;"
+);
+jrCore_form_field_create($_tmp);
+
+
+// *** PEZDatabase Stem Info Header ***
+$_tmp = array(
+    'name'       => 'pezdatabase_steminfo',
+    'label'      => 'Stem Info',
+    'help'       => '',
+    'type'       => 'text',
+    'validate'   => 'printable',
+    'required'   => false,
+    'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+jrCore_form_field_create($_tmp);
+
+// *** PEZDatabase IMC Country ***
+$_imc_opt = array(
+    0 => 'None',
+    1 => '1 Austria/Hungary',
+    2 => '2 Austria/Hong Kong',
+    3 => '3 Austria/Hungary',
+    4 => '4 Austria',
+    5 => '5 Yugoslavia/Slovenia',
+    6 => '6 Hong Kong/China',
+    7 => '7 Czechoslovakia',
+    8 => '8 Austria',
+    9 => '9 United States',
+    10 => 'V Yugoslavia'
+    );
+
+$_tmp = array(
+    'name'     => 'pezdatabase_country',
+    'type'     => 'select',
+    'options'  => $_imc_opt,
+    'validate' => 'printable',
+    'required' => 'off',
+    'default'  => 0,
+    'label'    => 'IMC Country',
+    'help'     => 'Select the IMC Country for this PEZ Item.',
+    'order'    => 4
+    );
+jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase Country List ***
+    $_countrylist_opt = array(
+        0 => 'None',
+        1 => 'American',
+        2 => 'Austria',
+        3 => 'China',
+        4 => 'chezech Republic',
+        5 => 'Czechosolovakia',
+        6 => 'Hong Kong',
+        7 => 'Hungary',
+        8 => 'Yugoslavia'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_countrylist',
+        'type'     => 'select',
+        'options'  => $_countrylist_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Country List',
+        'help'     => 'Select the IMC Country for this PEZ Item.',
+        'order'    => 5
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase Patent ***
+    $_patent_opt = array(
+        0 => 'None',
+        1 => '2,620,061',
+        2 => '3,410,455',
+        3 => '3,845,882',
+        4 => '3,942,683',
+        5 => '4,966,305',
+        6 => '5,984,285',
+        7 => '7,523,841'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_patent',
+        'type'     => 'select',
+        'options'  => $_patent_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Patent',
+        'help'     => 'Select the Patent for this PEZ Item.',
+        'order'    => 6
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase Feet ***
+    $_feet_opt = array(
+        0 => 'None',
+        1 => 'NF',
+        2 => 'Thin Feet',
+        3 => 'Thick Feet'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_feet',
+        'type'     => 'select',
+        'options'  => $_feet_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Feet',
+        'help'     => 'Select the feet of this PEZ Item.',
+        'order'    => 7
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+
+    // *** PEZDatabase Stem Color ***
+    $_color_opt = array(
+        0 => 'None',
+        1 => 'Aqua',
+        2 => 'Beigh',
+        3 => 'Black',
+        4 => 'Blue',
+        5 => 'Brown',
+        6 => 'Fusha',
+        7 => 'Glow-in-the-Dark',
+        8 => 'Gold',
+        9 => 'Grey',
+        10 => 'Green',
+        11=> 'Khaki',
+        12 => 'Lavender',
+        13 => 'Lime',
+        14=> 'Multi',
+        15 => 'Navy',
+        16 => 'Neon Green',
+        17=> 'Neon Orange',
+        18 => 'Neon Pink',
+        19 => 'Neon Red',
+        20=> 'Neon Yellow',
+        21 => 'Orange',
+        22 => 'Pink',
+        23=> 'Purple',
+        24 => 'Red',
+        25 => 'Royal Blue',
+        26=> 'Silver',
+        27 => 'Teal',
+        28 => 'White and  Yellow'
+
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_stemcolor',
+        'type'     => 'select',
+        'options'  => $_color_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Stem Color',
+        'help'     => 'Select the Stem Color of this PEZ Item.',
+        'order'    => 9
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase description ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_description',
+        'label'      => 'description',
+        'help'       => 'Enter a description for this database.',
+        'type'       => 'textarea',
+        'validate'   => 'printable',
+        'order'    => 10,
+        'required'   => false
+    );
+    jrCore_form_field_create($_tmp);
+
+
+    // *** PEZDatabase Image ***
+    $_tmp = array(
+        'name'     => 'pezdatabase_image',
+        'label'    => 'Image',
+        'help'     => 'Select an image for this PEZ item.',
+        'text'     => 'Upload A New  Image',
+        'type'     => 'image',
+        'order'    => 11,
+        'required' => false
+    );
+    jrCore_form_field_create($_tmp);
+
+    // ***  PEZDatabase Packaging ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_packaging',
+        'label'      => 'Packaging',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'    => 12,
+        'required'   => False
+    );
+    jrCore_form_field_create($_tmp);
+
+    // ***  PEZDatabase Made For ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_madefor',
+        'label'      => 'Made For',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'    => 13,
+        'required'   => False
+    );
+    jrCore_form_field_create($_tmp);
+
+// TODO missing wrapper from create form
+    // *** PEZDatabase Wrapper ***
+    $_wrapper_opt = array(
+        0 => 'None',
+        1 => 'Plastic',
+        2 => 'Cardboard'
+
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_wrapper',
+        'type'     => 'select',
+        'options'  => $_wrapper_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Wrapper',
+        'order'    => 14,
+        'help'     => 'Select the wrapper of this PEZ Item.',
+        'required'   => False
+
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+
+// TODO missing candy from create form ?
+    // *** PEZDatabase Candy ***
+    $_candy_opt = array(
+        0 => 'None',
+        1 => 'Cola',
+        2 => 'Peppermint Sugar-free',
+        3 => 'Fizzy',
+        4 => 'Lemon',
+        5 => 'Orange',
+        6 => 'Strawberry',
+        7 => 'Cherry',
+        8 => 'Mango',
+        9 => 'Rasberry',
+        10 => 'Sour Mix',
+        11 => 'Liquorice'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_candy',
+        'type'     => 'select',
+        'options'  => $_candy_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Candy',
+        'help'     => 'Select the candy for this PEZ Item.',
+        'order'    => 15,
+        'required'   => False
+
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // ***  PEZDatabase Purchase Info ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_purchaseinfo',
+        'label'      => 'Purchase Info',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'    => 16,
+        'required'   => False
+    );
+    jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Publish Date ***
+    $_tmp = array(
+        'name'     => 'pezdatabase_date',
+        'label'    => 'Date',
+        'help'     => 'What is the publish date of this PEZ item?',
+        'type'     => 'date',
+        'validate' => 'date',
+        'order'    => 17,
+        'required' => false
+    );
+    jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Price ***
+    $_tmp = array(
+        'name'     => 'pezdatabase_price',
+        'label'    => 'Price',
+        'help'     => 'What is the price of this PEZ item?',
+        'type'     => 'text',
+        'validate' => 'number_nz',
+        'order'    => 18,
+        'required' => false
+    );
+    jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Location ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_location',
+        'label'      => 'Location',
+        'help'       => 'What is the location of this PEZ item?',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'      => 19,
+        'required'   => true,
+        'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+    jrCore_form_field_create($_tmp);
+
+    // PEZ description
+    $_tmp = array(
+        'name'       => 'pezdatabase_notes',
+        'label'      => 'Notes',
+        'help'       => 'Enter any notes for this item.',
+        'type'       => 'textarea',
+        'validate'   => 'printable',
+        'order'    => 20,
+        'required'   => false
+    );
+    jrCore_form_field_create($_tmp);
+
 
     // This is where you would hook in to the form with php
 
@@ -211,6 +590,384 @@ function view_myPEZDatabase_update($_post, $_user, $_conf)
         'type'     => 'text',
         'validate' => 'printable',
         'required' => true
+    );
+    jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Character ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_character',
+        'label'      => 'Character',
+        'help'       => 'What is the name of this PEZ character?',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'required'   => true,
+        'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+    jrCore_form_field_create($_tmp);
+
+// TODO create category, series, sub-series chained select here.
+
+    // *** PEZDatabase Issue ***
+    $_issue_opt = array(
+        0 => 'None',
+        1 => 'A',
+        2 => 'B',
+        3 => 'C',
+        4 => 'D',
+        5 => 'E',
+        6 => 'F',
+        7 => 'G',
+        7 => 'H'
+
+    );
+
+    $_tmp = array(
+        'name'     => 'issue',
+        'type'     => 'select',
+        'options'  => $_issue_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Issue',
+        'help'     => 'Select the issue for this Item.',
+        'order'    => 3
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+// *** PEZDatabase Variation ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_variation',
+        'label'      => 'Variation',
+        'help'       => 'What is the Variation of this PEZ? (Red Head, Brown Eyes, Crystal Head...) ',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'required'   => false,
+        'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+    jrCore_form_field_create($_tmp);
+
+
+// *** PEZDatabase Stem Info Header ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_steminfo',
+        'label'      => 'Stem Info',
+        'help'       => '',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'required'   => false,
+        'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+    jrCore_form_field_create($_tmp);
+
+// *** PEZDatabase IMC Country ***
+    $_imc_opt = array(
+        0 => 'None',
+        1 => '1 Austria/Hungary',
+        2 => '2 Austria/Hong Kong',
+        3 => '3 Austria/Hungary',
+        4 => '4 Austria',
+        5 => '5 Yugoslavia/Slovenia',
+        6 => '6 Hong Kong/China',
+        7 => '7 Czechoslovakia',
+        8 => '8 Austria',
+        9 => '9 United States',
+        10 => 'V Yugoslavia'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_country',
+        'type'     => 'select',
+        'options'  => $_imc_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'IMC Country',
+        'help'     => 'Select the IMC Country for this PEZ Item.',
+        'order'    => 4
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase Country List ***
+    $_countrylist_opt = array(
+        0 => 'None',
+        1 => 'American',
+        2 => 'Austria',
+        3 => 'China',
+        4 => 'chezech Republic',
+        5 => 'Czechosolovakia',
+        6 => 'Hong Kong',
+        7 => 'Hungary',
+        8 => 'Yugoslavia'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_countrylist',
+        'type'     => 'select',
+        'options'  => $_countrylist_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Country List',
+        'help'     => 'Select the IMC Country for this PEZ Item.',
+        'order'    => 5
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase Patent ***
+    $_patent_opt = array(
+        0 => 'None',
+        1 => '2,620,061',
+        2 => '3,410,455',
+        3 => '3,845,882',
+        4 => '3,942,683',
+        5 => '4,966,305',
+        6 => '5,984,285',
+        7 => '7,523,841'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_patent',
+        'type'     => 'select',
+        'options'  => $_patent_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Patent',
+        'help'     => 'Select the Patent for this PEZ Item.',
+        'order'    => 6
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase Feet ***
+    $_feet_opt = array(
+        0 => 'None',
+        1 => 'NF',
+        2 => 'Thin Feet',
+        3 => 'Thick Feet'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_feet',
+        'type'     => 'select',
+        'options'  => $_feet_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Feet',
+        'help'     => 'Select the feet of this PEZ Item.',
+        'order'    => 7
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+
+    // *** PEZDatabase Stem Color ***
+    $_color_opt = array(
+        0 => 'None',
+        1 => 'Aqua',
+        2 => 'Beigh',
+        3 => 'Black',
+        4 => 'Blue',
+        5 => 'Brown',
+        6 => 'Fusha',
+        7 => 'Glow-in-the-Dark',
+        8 => 'Gold',
+        9 => 'Grey',
+        10 => 'Green',
+        11=> 'Khaki',
+        12 => 'Lavender',
+        13 => 'Lime',
+        14=> 'Multi',
+        15 => 'Navy',
+        16 => 'Neon Green',
+        17=> 'Neon Orange',
+        18 => 'Neon Pink',
+        19 => 'Neon Red',
+        20=> 'Neon Yellow',
+        21 => 'Orange',
+        22 => 'Pink',
+        23=> 'Purple',
+        24 => 'Red',
+        25 => 'Royal Blue',
+        26=> 'Silver',
+        27 => 'Teal',
+        28 => 'White and  Yellow'
+
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_stemcolor',
+        'type'     => 'select',
+        'options'  => $_color_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Stem Color',
+        'help'     => 'Select the Stem Color of this PEZ Item.',
+        'order'    => 9
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // *** PEZDatabase description ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_description',
+        'label'      => 'description',
+        'help'       => 'Enter a description for this database.',
+        'type'       => 'textarea',
+        'validate'   => 'printable',
+        'order'    => 10,
+        'required'   => false
+    );
+    jrCore_form_field_create($_tmp);
+
+
+    // *** PEZDatabase Image ***
+    $_tmp = array(
+        'name'     => 'pezdatabase_image',
+        'label'    => 'Image',
+        'help'     => 'Select an image for this PEZ item.',
+        'text'     => 'Upload A New  Image',
+        'type'     => 'image',
+        'order'    => 11,
+        'required' => false
+    );
+    jrCore_form_field_create($_tmp);
+
+    // ***  PEZDatabase Packaging ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_packaging',
+        'label'      => 'Packaging',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'    => 12,
+        'required'   => False
+    );
+    jrCore_form_field_create($_tmp);
+
+    // ***  PEZDatabase Made For ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_madefor',
+        'label'      => 'Made For',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'    => 13,
+        'required'   => False
+    );
+    jrCore_form_field_create($_tmp);
+
+// TODO missing wrapper from create form
+    // *** PEZDatabase Wrapper ***
+    $_wrapper_opt = array(
+        0 => 'None',
+        1 => 'Plastic',
+        2 => 'Cardboard'
+
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_wrapper',
+        'type'     => 'select',
+        'options'  => $_wrapper_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Wrapper',
+        'order'    => 14,
+        'help'     => 'Select the wrapper of this PEZ Item.',
+        'required'   => False
+
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+
+// TODO missing candy from create form ?
+    // *** PEZDatabase Candy ***
+    $_candy_opt = array(
+        0 => 'None',
+        1 => 'Cola',
+        2 => 'Peppermint Sugar-free',
+        3 => 'Fizzy',
+        4 => 'Lemon',
+        5 => 'Orange',
+        6 => 'Strawberry',
+        7 => 'Cherry',
+        8 => 'Mango',
+        9 => 'Rasberry',
+        10 => 'Sour Mix',
+        11 => 'Liquorice'
+    );
+
+    $_tmp = array(
+        'name'     => 'pezdatabase_candy',
+        'type'     => 'select',
+        'options'  => $_candy_opt,
+        'validate' => 'printable',
+        'required' => 'off',
+        'default'  => 0,
+        'label'    => 'Candy',
+        'help'     => 'Select the candy for this PEZ Item.',
+        'order'    => 15,
+        'required'   => False
+
+    );
+    jrCore_register_setting('myPEZDatabase', $_tmp);
+
+    // ***  PEZDatabase Purchase Info ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_purchaseinfo',
+        'label'      => 'Purchase Info',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'    => 16,
+        'required'   => False
+    );
+    jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Publish Date ***
+    $_tmp = array(
+        'name'     => 'pezdatabase_date',
+        'label'    => 'Date',
+        'help'     => 'What is the publish date of this PEZ item?',
+        'type'     => 'date',
+        'validate' => 'date',
+        'order'    => 17,
+        'required' => false
+    );
+    jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Price ***
+    $_tmp = array(
+        'name'     => 'pezdatabase_price',
+        'label'    => 'Price',
+        'help'     => 'What is the price of this PEZ item?',
+        'type'     => 'text',
+        'validate' => 'number_nz',
+        'order'    => 18,
+        'required' => false
+    );
+    jrCore_form_field_create($_tmp);
+
+    // *** PEZDatabase Location ***
+    $_tmp = array(
+        'name'       => 'pezdatabase_location',
+        'label'      => 'Location',
+        'help'       => 'What is the location of this PEZ item?',
+        'type'       => 'text',
+        'validate'   => 'printable',
+        'order'      => 19,
+        'required'   => true,
+        'onkeypress' => "if (event && event.keyCode == 13) return false;"
+    );
+    jrCore_form_field_create($_tmp);
+
+    // PEZ description
+    $_tmp = array(
+        'name'       => 'pezdatabase_notes',
+        'label'      => 'Notes',
+        'help'       => 'Enter any notes for this item.',
+        'type'       => 'textarea',
+        'validate'   => 'printable',
+        'order'    => 20,
+        'required'   => false
     );
     jrCore_form_field_create($_tmp);
 
