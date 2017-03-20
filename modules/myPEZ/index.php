@@ -52,6 +52,8 @@ function view_myPEZ_create($_post, $_user, $_conf)
     jrUser_check_quota_access('myPEZ');
     jrProfile_check_disk_usage();
 
+    $_pez = jrCore_db_get_item('myPEZDatabase', $_post['_1']);
+
     // Get language strings
     $_lang = jrUser_load_lang_strings();
 
@@ -76,6 +78,7 @@ function view_myPEZ_create($_post, $_user, $_conf)
         'help'       => 4,
         'type'       => 'text',
         'validate'   => 'printable',
+        'default'    => $_pez['pezdatabase_title'],
         'required'   => true,
         'onkeypress' => "if (event && event.keyCode == 13) return false;"
     );
@@ -94,6 +97,7 @@ function view_myPEZ_create($_post, $_user, $_conf)
     jrCore_form_field_create($_tmp);
 
     // Display page with form in it
+    jrCore_form_delete_session();
     jrCore_page_display();
 }
 
@@ -182,12 +186,12 @@ function view_myPEZ_update($_post, $_user, $_conf)
 
     // PEZ Title
     $_tmp = array(
-        'name'      => 'pez_title',
-        'label'     => 3,
-        'help'      => 4,
-        'type'      => 'text',
-        'validate'  => 'printable',
-        'required'  => true
+        'name'     => 'pez_title',
+        'label'    => 3,
+        'help'     => 4,
+        'type'     => 'text',
+        'validate' => 'printable',
+        'required' => true
     );
     jrCore_form_field_create($_tmp);
 
