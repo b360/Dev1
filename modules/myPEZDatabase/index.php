@@ -1167,3 +1167,20 @@ function view_myPEZDatabase_uploadODS_save($_post, $_user, $_conf)
 }
 
 
+//------------------------------
+// list
+//------------------------------
+function view_myPEZDatabase_list($_post, $_user, $_conf)
+{
+
+    $_rep =  array();
+//    $_sp = array(
+//        'skip_triggers' => true,
+//        'limit'         => 5000
+//    );
+//    $_sp = jrCore_db_search_items('myPEZDatabase', $_sp);
+    return jrCore_parse_template('list.tpl', $_rep, 'myPEZDatabase');
+
+}
+
+
