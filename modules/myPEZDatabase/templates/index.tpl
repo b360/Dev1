@@ -132,21 +132,22 @@ THAT ACCORDIAN MENU THING......<BR>
 <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
 
 {myPEZ_drop_down assign="_pez"}
+{jrCore_module_url module="myPEZDatabase" assign="murl"}
 {if is_array($_pez)}
     <aside class="accordion">
         {foreach $_pez as $name => $s0}
             {if strlen({$name}) > 0 }
-                <h1>{$name}</h1>
+                <h1>{$name} <a href="{$jamroom_url}/{$murl}/list/series_0={$name}" style="float: right;">{jrCore_icon icon="plus" size=20}</a></h1>
                 <div>
                     {if is_array($s0.children)}
                         {foreach $s0.children as $label => $s1}
                             {if strlen({$label}) > 0}
-                                <h2>{$label}</h2>
+                                <h2>{$label} <a href="{$jamroom_url}/{$murl}/list/series_0={$name}/series_1={$label}" style="float: right;">{jrCore_icon icon="plus" size=20}</a></h2>
                                 <div>
                                     {if is_array($s1.children)}
                                         {foreach $s1.children as $s1_label => $s2}
                                             {if strlen({$s1_label}) > 0 }
-                                                <h3>{$s1_label}</h3>
+                                                <h3>{$s1_label} <a href="{$jamroom_url}/{$murl}/list/series_0={$name}/series_1={$label}/series_2={$s1_label}" style="float: right;">{jrCore_icon icon="plus" size=20}</a></h3>
                                             {/if}
                                         {/foreach}
                                     {/if}
@@ -160,7 +161,7 @@ THAT ACCORDIAN MENU THING......<BR>
     </aside>
 {/if}
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+{*<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>*}
 
 <script type="text/javascript">
     var headers = ["H1", "H2", "H3", "H4", "H5", "H6"];
