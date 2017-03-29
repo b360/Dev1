@@ -71,6 +71,8 @@ function view_myPEZ_create($_post, $_user, $_conf)
     );
     jrCore_form_create($_tmp);
 
+    // THIS FORM JUST NEEDS EXPANDING OUT TO SAVE WHATEVER DATA YOU WANT FROM THE PEZ DATABASE TO THE PEZ USERS FORM.
+
     // PEZ Title
     $_tmp = array(
         'name'       => 'pez_title',

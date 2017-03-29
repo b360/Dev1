@@ -3,6 +3,7 @@
 
 {capture assign="template"}
 {literal}
+    {jrCore_module_url module="myPEZ" assign="murl"}
     {if isset($_items) && is_array($_items)}
     <table>
         <tr>
@@ -18,7 +19,7 @@
             <td>{$item.pezdatabase_series_0}</td>
             <td>{$item.pezdatabase_series_1}</td>
             <td>{$item.pezdatabase_series_2}</td>
-            <td><a href="#" style="float: right;">{jrCore_icon icon="plus" size=20}</a></td>
+            <td><a href="{$jamroom_url}/{$murl}/create/{$item._item_id}" style="float: right;">{jrCore_icon icon="plus" size=20}</a></td>
         </tr>
         {/foreach}
     </table>
